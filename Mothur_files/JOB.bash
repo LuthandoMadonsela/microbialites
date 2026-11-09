@@ -24,4 +24,4 @@ mkdir pbserr pbsout
 
 ##Running mothur
 
-mothur Microbialites.batchfile
+mothur OV22.batchfile
