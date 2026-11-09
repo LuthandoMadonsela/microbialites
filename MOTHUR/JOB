@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -q serial
+#PBS -l select=1:ncpus=24
+#PBS -l walltime=48:00:00
+#PBS -V
+#PBS -N Chapter_2
+#PBS -e pbserr/pbs.err
+#PBS -o pbsout/pbs.out
+#PBS -m bea
+#PBS -M luthando9302@gmail.com
+
+##set up mothur for job
+
+module load /apps/chpc/scripts/modules/bio/app/mothur/1.43.0
+#module load /apps/chpc/scripts/modules/bio/app/openmpi/1.10.3/gcc-5.1.0_java-1.8.0_73
+###setting mpirun parameters (to allow for parallelising to make it FASTER)
+#OMP_NUM_THREADS=1
+#NP=`cat ${PBS_NODEFILE} | wc -l`
+
+
+##Setting up working folders
+cd /mnt/lustre/users/lmadonsela/2022/
+mkdir pbserr pbsout
+
+##Running mothur
+
+mothur OV22.batchfile
